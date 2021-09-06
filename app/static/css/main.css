@@ -1,0 +1,29 @@
+.fondo {
+
+    background-color: rgb(37, 37, 37);
+
+}
+
+.texto {
+    text-decoration-color: aliceblue;
+    color: rgb(235, 235, 235);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.lista {
+    list-style:none
+}
+
+.borde {
+    border-radius: 30px;
+    border: 3px solid;
+    padding: 10px;
+}
+
+.centro {
+    text-align: center;
+}
+
+.right {
+    text-align: right;
+}

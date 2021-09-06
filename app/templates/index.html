@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<div class="row">
+    <div class="col texto">
+        <h1>Bienvenido/a {{request.session.usuario.firstname}} {{request.session.usuario.lastname}}</h1>
+    </div>
+</div>
+<!-- AQUI SECCION DE INGRESO DE MENSAJES -->
+<div class="row texto">
+    <form action='/mensaje/' method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="mensaje">Postea un mensaje:</label>
+            <textarea class="form-control" rows="5" id="mensaje" name="mensaje"></textarea>
+            <button type="submit" class="btn btn-primary mt-2">¡Enviar Mensaje!</button>
+        </div>
+    </form>
+</div>
+<!-- MUESTRA DE COMENTARIOS DE CADA MENSAJE -->
+<div class="row-9 mt-3 texto">
+    <div class="col-9 ">
+    <h1>MENSAJES</h1>
+        {% for all in posts %}
+        <dl>
+            <dt><b>| {{all.usuariom}} | {{all.created_at}} |</b></dt>
+            <dd>    {{all.mensaje}}</dd>
+            {% for comentario in comentario %}
+            <dd>>>>> {{comentario.author.id}} : {{comentario.comentario}}</dd>
+            {% endfor %}
+                <div class="col-5">
+                    <form action='/comentario/' method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="comentario">Postea un comentario:</label>
+                            <textarea class="form-control" rows="5" id="comentario" name="comentario"></textarea>
+                            <button type="submit" class="btn btn-success mt-2">¡Enviar Comentario!</button>
+                        </div>
+                    </form>
+                </div>
+            </dd>
+        </dl> 
+        {% endfor %}
+    </div>
+    
+</div>
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+

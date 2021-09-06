@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block titulo %}Ingreso de usuarios{% endblock %}
+
+{% block contenido %}
+<div class="row">
+    <div class="col-5 texto">
+        <h1>Login de Usuarios</h1>
+        <form method="POST">
+            {%csrf_token%}
+            <div class="mb-3">
+                <label for="email">Email:</label>
+                <input type="text" class="form-control" id="email" name="email">
+            </div>
+            <div class="mb-3">
+                <label for="password">Contraseña:</label>
+                <input type="password" class="form-control" id="password" name="password">
+            </div>
+            <button type="submit" class="btn btn-primary">LOGIN</button>
+        </form>
+        <a href="/registro">¿No tienes cuenta?. Ir al Registro del sistema</a>
+    </div>
+</div>
+
+{% endblock %}
+
